@@ -1,73 +1,253 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-div.container {
-    width: 100%;
-    border: 1px solid gray;
-}
+  <head>
+    <style>
 
-header, footer {
-    padding: 1em;
-    color: white;
-    background-color: black;
-    clear: left;
-    text-align: center;
-}
+    div.container {
+        width: 100%;
+        border: 1px solid gray;
+    }
 
-nav {
-    float: left;
-    max-width: 160px;
-    margin: 0;
-    padding: 1em;
-}
+    footer {
+        padding: 1em;
+        color: white;
+        background-color: black;
+        clear: left;
+        text-align: center;
+    }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-   
-nav ul a {
-    text-decoration: none;
-}
+    header {
+        padding: 1em;
+        color: #000;
+        background-color: #FFF;
+        clear: left;
+        text-align: center;
+    }
 
-article {
-    margin-left: 170px;
-    border-left: 1px solid gray;
-    padding: 1em;
-    overflow: hidden;
-}
-</style>
-</head>
-<body>
+    article {
+        padding: 1em;
+        overflow: hidden;
+    }
 
-<div class="container">
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
 
-<header>
-   <h1>City Gallery</h1>
-</header>
-  
-<nav>
-  <ul>
-    <li><a href="#">PDI</a></li>
-    <li><a href="#">STR</a></li>
-    <li><a href="#">IA</a></li>
-  </ul>
-</nav>
+    nav ul li {
+        float: left;
+        border-right: 1px solid #bbb;
+    }
 
-<article>
-  <h1>Portal</h1>
-  <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo eius qui, ad obcaecati veritatis a rem facere repellendus, blanditiis ipsam fuga quisquam? Quaerat eos eligendi nobis asperiores. Delectus, unde, optio. </p>
+    nav ul li:last-child {
+        border-right: none;
+    }
 
-  <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo possimus in necessitatibus saepe accusamus, hic sit ad vel quam ducimus reiciendis odit, natus ipsam recusandae maiores voluptatum sapiente. Enim, sed. </p>
+    nav ul li a, .dropbtn {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
 
-  <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati, consectetur praesentium quos, ipsam velit doloribus aperiam beatae nemo illum culpa neque! Autem unde dignissimos debitis nisi voluptatem nostrum reiciendis? A. </p>
+    nav ul li a:hover, .dropdown:hover .dropbtn {
+        background-color: red;
+    }
 
-</article>
+    nav ul li.dropdown {
+        display: inline-block;
+    }
 
-<footer>Copyright &copy; alanjhone.github.io</footer>
+    .active {
+        background-color: #4CAF50;
+    }
 
-</div>
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
 
-</body>
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .dropdown-content a:hover {background-color: #f1f1f1}
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    div.gallery {
+        border: 1px solid #ccc;
+    }
+
+    div.gallery:hover {
+        border: 1px solid #777;
+    }
+
+    div.gallery img {
+        width: 100%;
+        height: auto;
+    }
+
+    div.desc {
+        padding: 15px;
+        text-align: center;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .responsive {
+        padding: 0 6px;
+        float: left;
+        width: 33.33333%;
+    }
+
+    @media only screen and (max-width: 700px){
+        .responsive {
+            width: 49.99999%;
+            margin: 6px 0;
+        }
+    }
+
+    @media only screen and (max-width: 500px){
+        .responsive {
+            width: 100%;
+        }
+    }
+
+    .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
+    .destaques{
+        width: 50%;
+        margin: 0 auto;
+        padding: 20px 0 20px 0;
+    }
+    
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Portal</h1>
+      </header>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Tutorials</a>
+            <div class="dropdown-content">
+              <a href="#">PDI</a>
+              <a href="#">STR</a>
+              <a href="#">IA</a>
+            </div>
+          </li>
+          <li class="active" style="float: right"><a href="#about">About</a></li>
+        </ul>
+      </nav>
+
+      <article>
+        
+
+        <div class="destaques">
+          <div class="responsive">
+            <div class="gallery">
+              <a target="_blank" href="img_fjords.jpg">
+                <img src="imgs/img_fjords.jpg" alt="Trolltunga Norway" width="300" height="200">
+              </a>
+              <div class="desc">Add a description here</div>
+            </div>
+          </div>
+
+
+          <div class="responsive">
+            <div class="gallery">
+              <a target="_blank" href="img_forest.jpg">
+                <img src="imgs/img_forest.jpg" alt="Forest" width="600" height="400">
+              </a>
+              <div class="desc">Add a description of the image here</div>
+            </div>
+          </div>
+
+          <div class="responsive">
+            <div class="gallery">
+              <a target="_blank" href="img_lights.jpg">
+                <img src="imgs/img_lights.jpg" alt="Northern Lights" width="600" height="400">
+              </a>
+              <div class="desc">Add a description of the image here</div>
+            </div>
+          </div>
+
+          <div class="responsive">
+            <div class="gallery">
+              <a target="_blank" href="img_mountains.jpg">
+                <img src="imgs/img_mountains.jpg" alt="Mountains" width="600" height="400">
+              </a>
+              <div class="desc">Add a description of the image here</div>
+            </div>
+          </div>
+
+          <div class="responsive">
+            <div class="gallery">
+              <a target="_blank" href="img_fjords.jpg">
+                <img src="imgs/img_fjords.jpg" alt="Trolltunga Norway" width="300" height="200">
+              </a>
+              <div class="desc">Add a description of the image here</div>
+            </div>
+          </div>
+
+
+          <div class="responsive">
+            <div class="gallery">
+              <a target="_blank" href="img_forest.jpg">
+                <img src="imgs/img_forest.jpg" alt="Forest" width="600" height="400">
+              </a>
+              <div class="desc">Add a description of the image here</div>
+            </div>
+          </div>
+
+          <div class="responsive">
+            <div class="gallery">
+              <a target="_blank" href="img_lights.jpg">
+                <img src="imgs/img_lights.jpg" alt="Northern Lights" width="600" height="400">
+              </a>
+              <div class="desc">Add a description of the image here</div>
+            </div>
+          </div>
+
+          <div class="responsive">
+            <div class="gallery">
+              <a target="_blank" href="img_mountains.jpg">
+                <img src="imgs/img_mountains.jpg" alt="Mountains" width="600" height="400">
+              </a>
+              <div class="desc">Add a description of the image here</div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+
+      </article>
+
+      <footer>Copyright &copy; alanjhone.github.io</footer>
+    </div>
+  </body>
 </html>
