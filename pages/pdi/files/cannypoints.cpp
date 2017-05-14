@@ -11,12 +11,9 @@
 using namespace std;
 using namespace cv;
 
-// #define STEP 10
-// #define JITTER 5
-// #define RAIO 5
-#define STEP 5
-#define JITTER 3
-#define RAIO 3
+int STEP = 5;
+int JITTER = 3;
+int RAIO = 3;
 
 int top_slider = 10;
 int top_slider_max = 200;
@@ -31,7 +28,7 @@ int main(int argc, char** argv){
 
   Mat frame, points;
 
-  int width, height, gray;
+  int width, height;
   int x, y;
 
   image= imread(argv[1],CV_LOAD_IMAGE_COLOR);
@@ -82,25 +79,37 @@ int main(int argc, char** argv){
   imshow("pontilhismo", points);
   imwrite("pontilhismo.jpg", points);
 
+  Canny(image, border, 30, 3*120);
+  
   for(auto i : xrange){
-    random_shuffle(yrange.begin(), yrange.end());
+    //random_shuffle(yrange.begin(), yrange.end());
     for(auto j : yrange){
-      x = i+rand()%(2*JITTER)-JITTER+1;
-      y = j+rand()%(2*JITTER)-JITTER+1;
+      if(border.at<uchar>(i,j) == 255){
+        x = i+rand()%(2*JITTER)-JITTER+1;
+        y = j+rand()%(2*JITTER)-JITTER+1;
+        RAIO = 3;
+      }else{
+        x = i;
+        y = j;
+        RAIO = 5;
+      }
+
       Vec3b val = image.at<Vec3b>(x,y);
       circle(points,
-             cv::Point(y,x),
-             RAIO,
-             CV_RGB(val[2],val[1],val[0]),
-             -1,
-             CV_AA);
+      cv::Point(y,x),
+      RAIO,
+      CV_RGB(val[2],val[1],val[0]),
+     -1,
+     CV_AA);
     }
   }
 
+
+  imshow("canny", border);
   imshow("cannypoints", points);
   waitKey();
 
-
+  imwrite("canny.jpg", border);
   imwrite("cannypoints.jpg", points);
 
 
